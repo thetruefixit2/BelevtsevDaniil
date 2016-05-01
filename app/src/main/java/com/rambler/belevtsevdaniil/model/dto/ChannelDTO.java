@@ -1,4 +1,4 @@
-package com.rambler.belevtsevdaniil.model.data;
+package com.rambler.belevtsevdaniil.model.dto;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
@@ -8,10 +8,10 @@ import java.util.List;
 
 /**
  * Created by Daniil Belevtsev on 30.04.2016 19:18.
- * Project: fasten-customer-android; Visit www.fasten.com
+ * Project: BelevtsevDaniil; Skype: pandamoni1
  */
 @Root(name = "channel")
-public class ChannelModel {
+public class ChannelDTO {
     @Element(name = "title")
     private String title;
 
@@ -19,7 +19,7 @@ public class ChannelModel {
     private String copyright;
 
     @ElementList(name = "item")
-    private List<ElementModel> newsFeed;
+    private List<ElementDTO> newsFeed;
 
     public String getTitle() {
         return title;
@@ -29,7 +29,7 @@ public class ChannelModel {
         return copyright;
     }
 
-    public List<ElementModel> getNewsFeed() {
+    public List<ElementDTO> getNewsFeed() {
         return newsFeed;
     }
 }
