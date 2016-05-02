@@ -14,6 +14,7 @@ import com.rambler.belevtsevdaniil.app.App;
 import com.rambler.belevtsevdaniil.presenter.beans.NewsItem;
 import com.rambler.belevtsevdaniil.presenter.interfaces.Presenter;
 import com.rambler.belevtsevdaniil.presenter.presenters.NewsListPresenter;
+import com.rambler.belevtsevdaniil.utils.SimpleItemDecoration;
 import com.rambler.belevtsevdaniil.view.adapters.NewsListAdapter;
 import com.rambler.belevtsevdaniil.view.callbacks.OnNewsListEventsListener;
 import com.rambler.belevtsevdaniil.view.interfaces.NewsListView;
@@ -74,6 +75,7 @@ public class NewsListFragment extends BaseFragment implements NewsListView {
         ButterKnife.bind(this, view);
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addItemDecoration(new SimpleItemDecoration(getContext()));
         newsListAdapter = new NewsListAdapter(getContext(), callbacks);
         recyclerView.setAdapter(newsListAdapter);
         presenter.onCreateView(savedInstanceState);

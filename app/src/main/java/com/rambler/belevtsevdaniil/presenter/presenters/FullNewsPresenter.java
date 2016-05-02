@@ -8,8 +8,6 @@ import com.rambler.belevtsevdaniil.presenter.beans.NewsItem;
 import com.rambler.belevtsevdaniil.view.interfaces.FullNewsView;
 import com.rambler.belevtsevdaniil.view.interfaces.View;
 
-import org.parceler.Parcels;
-
 /**
  * Created by Daniil Belevtsev on 02.05.2016 4:52.
  * Project: BelevtsevDaniil; Skype: pandamoni1
@@ -25,14 +23,15 @@ public class FullNewsPresenter extends DefaultPresenter {
         return view;
     }
 
-    public void init(FullNewsView view) {
+    public void init(FullNewsView view, Bundle bundle) {
         App.getComponent().inject(this);
         this.view = view;
+        readArguments(bundle);
     }
 
     public void onCreateView(Bundle savedInstanceState) {
         if(savedInstanceState != null) {
-            newsItem = Parcels.unwrap(savedInstanceState.getParcelable(AppConst.EXTRA_NEWS_ITEM));
+            newsItem = (NewsItem) savedInstanceState.getSerializable(AppConst.EXTRA_NEWS_ITEM);
         }
         if(isNotEmpty()) {
             view.showNewsItem(newsItem);
@@ -43,10 +42,15 @@ public class FullNewsPresenter extends DefaultPresenter {
 
     public void saveInstanceState(Bundle outState) {
         if(isNotEmpty()) {
-            outState.putParcelable(AppConst.EXTRA_NEWS_ITEM, Parcels.wrap(newsItem));
+            outState.putSerializable(AppConst.EXTRA_NEWS_ITEM, newsItem);
         }
     }
 
+    private void readArguments(Bundle bundle) {
+        if(bundle != null) {
+            newsItem = (NewsItem) bundle.getSerializable(AppConst.EXTRA_NEWS_ITEM);
+        }
+    }
     private boolean isNotEmpty() {
         return newsItem != null && newsItem.getDescription() != null && !newsItem.getDescription().isEmpty();
     }

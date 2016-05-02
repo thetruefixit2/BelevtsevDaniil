@@ -5,7 +5,9 @@ import android.os.Bundle;
 import com.rambler.belevtsevdaniil.app.App;
 import com.rambler.belevtsevdaniil.app.AppConst;
 import com.rambler.belevtsevdaniil.presenter.beans.NewsItem;
-import com.rambler.belevtsevdaniil.presenter.mappers.RssNewsMapper;
+import com.rambler.belevtsevdaniil.presenter.rxoperators.NewsListMapper;
+import com.rambler.belevtsevdaniil.presenter.rxoperators.RssListsReducer;
+import com.rambler.belevtsevdaniil.presenter.rxoperators.RssNewsMapper;
 import com.rambler.belevtsevdaniil.view.interfaces.NewsListView;
 import com.rambler.belevtsevdaniil.view.interfaces.View;
 
@@ -28,6 +30,12 @@ public class NewsListPresenter extends DefaultPresenter {
     @Inject
     protected RssNewsMapper rssMapper;
 
+    @Inject
+    protected RssListsReducer listsReducer;
+
+    @Inject
+    protected NewsListMapper newsListMapper;
+
     private NewsListView view;
 
     private List<NewsItem> newsFeed;
@@ -44,7 +52,9 @@ public class NewsListPresenter extends DefaultPresenter {
 
     public void loadNews() {
         Subscription sub = Observable.merge(model.getLentaChannel(), model.getGazetaChannel())
-                .map(rssMapper)
+                .map(rssMapper) // преобразуем из dto
+                .reduce(listsReducer) // собираем все в одно
+                .map(newsListMapper) // сортируем
                 .subscribe(new Observer<List<NewsItem>>() {
                     @Override
                     public void onCompleted() {
@@ -59,7 +69,6 @@ public class NewsListPresenter extends DefaultPresenter {
                     @Override
                     public void onNext(List<NewsItem> newsItems) {
                         if(newsItems != null && !newsItems.isEmpty()) {
-                            newsFeed = newsItems;
                             view.showLastNews(newsItems);
                         } else {
                             view.showEmptyNews();

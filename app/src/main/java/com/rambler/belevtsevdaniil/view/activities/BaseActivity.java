@@ -44,7 +44,7 @@ public class BaseActivity extends AppCompatActivity implements OnProgressListene
 
     public void addFragment(Fragment fragment, String tag, boolean addToBackStack) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(fragment, tag);
+        transaction.add(R.id.container, fragment, tag);
         if(addToBackStack) {
             transaction.addToBackStack(tag);
         }
