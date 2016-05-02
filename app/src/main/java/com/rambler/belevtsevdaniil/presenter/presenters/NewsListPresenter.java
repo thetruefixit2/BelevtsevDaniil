@@ -11,8 +11,7 @@ import com.rambler.belevtsevdaniil.presenter.rxoperators.RssNewsMapper;
 import com.rambler.belevtsevdaniil.view.interfaces.NewsListView;
 import com.rambler.belevtsevdaniil.view.interfaces.View;
 
-import org.parceler.Parcels;
-
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -78,9 +77,10 @@ public class NewsListPresenter extends DefaultPresenter {
         addSubscription(sub);
     }
 
+    @SuppressWarnings("unchecked")
     public void onCreateView(Bundle savedInstanceState) {
         if(savedInstanceState != null) {
-            newsFeed = Parcels.unwrap(savedInstanceState.getParcelable(AppConst.EXTRA_NEWS_FEED));
+            newsFeed = (List<NewsItem>) savedInstanceState.getSerializable(AppConst.EXTRA_NEWS_FEED);
         }
         if(isNotEmptyFeed()) {
             view.showLastNews(newsFeed);
@@ -91,7 +91,7 @@ public class NewsListPresenter extends DefaultPresenter {
 
     public void saveInstanceState(Bundle outState) {
         if(isNotEmptyFeed()) {
-            outState.putParcelable(AppConst.EXTRA_NEWS_FEED, Parcels.wrap(newsFeed));
+            outState.putSerializable(AppConst.EXTRA_NEWS_FEED, (Serializable) newsFeed);
         }
     }
 
