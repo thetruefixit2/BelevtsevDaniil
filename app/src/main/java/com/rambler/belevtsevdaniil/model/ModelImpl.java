@@ -5,6 +5,7 @@ import com.rambler.belevtsevdaniil.app.AppConst;
 import com.rambler.belevtsevdaniil.model.api.interfaces.GazetaApi;
 import com.rambler.belevtsevdaniil.model.api.interfaces.LentaApi;
 import com.rambler.belevtsevdaniil.model.dto.RssDTO;
+import com.rambler.belevtsevdaniil.presenter.beans.NewsProvider;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -45,6 +46,10 @@ public class ModelImpl implements Model {
     public Observable<RssDTO> getGazetaChannel() {
         return gazetaApi
                 .getGazetaRss()
+                .map(rssDTO -> {
+                    rssDTO.setProvider(NewsProvider.GAZETA);
+                    return rssDTO;
+                })
                 .compose(applySchedulers());
     }
 
@@ -52,6 +57,10 @@ public class ModelImpl implements Model {
     public Observable<RssDTO> getLentaChannel() {
         return lentaApi
                 .getLentaRss()
+                .map(rssDTO -> {
+                    rssDTO.setProvider(NewsProvider.LENTA);
+                    return rssDTO;
+                })
                 .compose(applySchedulers());
     }
 

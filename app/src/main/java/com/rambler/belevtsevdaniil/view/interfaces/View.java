@@ -5,4 +5,7 @@ package com.rambler.belevtsevdaniil.view.interfaces;
  * Project: BelevtsevDaniil; Skype: pandamoni1
  */
 public interface View {
+    void showError(String error);
+    void showLoading();
+    void hideLoading();
 }

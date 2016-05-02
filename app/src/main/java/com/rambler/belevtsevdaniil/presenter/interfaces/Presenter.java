@@ -5,5 +5,5 @@ package com.rambler.belevtsevdaniil.presenter.interfaces;
  * Project: BelevtsevDaniil; Skype: pandamoni1
  */
 public interface Presenter {
-    void onClose();
+    void onStop();
 }

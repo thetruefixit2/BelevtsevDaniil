@@ -9,7 +9,7 @@ import rx.Observable;
  * Created by Daniil Belevtsev on 30.04.2016 13:15.
  * Project: BelevtsevDaniil; Skype: pandamoni1
  */
-public interface GazetaApi extends ApiInterface {
+public interface GazetaApi {
     @GET("/export/rss/lenta.xml")
     Observable<RssDTO> getGazetaRss();
 }

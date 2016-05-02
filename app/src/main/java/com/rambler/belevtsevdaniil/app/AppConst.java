@@ -11,5 +11,6 @@ public class AppConst {
     public static final String UI_THREAD = "ui_thread";
     public static final String IO_THREAD = "io_thread";
 
-    public static final String SERIALIZABLE_NEWS_BUNDLE = "news_bundle";
+    public static final String EXTRA_NEWS_FEED = "extra_news_feed";
+    public static final String EXTRA_NEWS_ITEM = "extra_news_item";
 }

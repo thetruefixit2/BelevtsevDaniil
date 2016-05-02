@@ -9,7 +9,7 @@ import rx.Observable;
  * Created by Daniil Belevtsev on 30.04.2016 13:16.
  * Project: BelevtsevDaniil; Skype: pandamoni1
  */
-public interface LentaApi extends  ApiInterface {
+public interface LentaApi {
     @GET("/rss")
     Observable<RssDTO> getLentaRss();
 }
