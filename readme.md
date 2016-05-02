@@ -3,7 +3,9 @@
 SUPER-PUPER-RSS-READER-BEST-EVER-LIKE-IT-FAST is rss-reader of Gazeta.ru and lenta.ru
 
 ### Version
-1.0
+ * 1.0
+ 
+
 ### TODO
 Приложение должно отображать новости в одном списке, отсортированном по дате публикации,
 из двух источников - http://lenta.ru/rss и http://www.gazeta.ru/export/rss/lenta.xml.
@@ -16,6 +18,8 @@ SUPER-PUPER-RSS-READER-BEST-EVER-LIKE-IT-FAST is rss-reader of Gazeta.ru and len
 
 ### Architecture
  *  https://habrahabr.ru/company/rambler-co/blog/275943/
+ 
+ 
 ### Tech
 
 SUPER-PUPER-RSS-READER-BEST-EVER-LIKE-IT-FAST uses a number of open source projects to work properly:
