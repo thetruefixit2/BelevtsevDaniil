@@ -1,6 +1,6 @@
 package com.rambler.belevtsevdaniil.view.interfaces;
 
-import com.rambler.belevtsevdaniil.presenter.vo.NewsItem;
+import com.rambler.belevtsevdaniil.presenter.beans.NewsItem;
 
 import java.util.List;
 
@@ -14,6 +14,6 @@ public interface NewsListView extends View {
 
     void showEmptyNews();
 
-    void openAdditionalInfo();
+    void showFullNews(NewsItem item);
 
 }

@@ -7,10 +7,8 @@ import org.simpleframework.xml.Root;
  * Created by Daniil Belevtsev on 30.04.2016 20:03.
  * Project: BelevtsevDaniil; Skype: pandamoni1
  */
-@Root(name = "item")
+@Root(name = "item", strict = false)
 public class ElementDTO {
-    @Element(name = "guid")
-    private String id;
 
     @Element(name = "pubDate")
     private String publishDate;
@@ -21,15 +19,9 @@ public class ElementDTO {
     @Element(name = "enclosure", required = false)
     private ImageDTO enclosure;
 
-    @Element(name = "description")
+    @Element(name = "description", data = true, required = false)
     private String description;
 
-    @Element(name = "link")
-    private String link;
-
-    public String getId() {
-        return id;
-    }
 
     public String getPublishDate() {
         return publishDate;
@@ -47,7 +39,4 @@ public class ElementDTO {
         return description;
     }
 
-    public String getLink() {
-        return link;
-    }
 }

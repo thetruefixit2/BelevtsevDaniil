@@ -8,21 +8,14 @@ import org.simpleframework.xml.Root;
  * Project: BelevtsevDaniil; Skype: pandamoni1
  */
 
-@Root(name = "enclosure")
+@Root(name = "enclosure", strict = false)
 public class ImageDTO {
 
-    @Attribute(name = "length")
-    private String length;
+        @Attribute(name = "type")
+        private String type;
 
-    @Attribute(name = "type")
-    private String type;
-
-    @Attribute(name = "url")
-    private String url;
-
-    public String getLength() {
-        return length;
-    }
+        @Attribute(name = "url")
+        private String url;
 
     public String getType() {
         return type;

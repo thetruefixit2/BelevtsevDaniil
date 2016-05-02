@@ -31,7 +31,7 @@ public abstract class DefaultPresenter implements Presenter {
     }
 
     @Override
-    public void onClose() {
+    public void onStop() {
         compositeSubscription.clear();
     }
 

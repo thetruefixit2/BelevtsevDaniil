@@ -1,7 +1,7 @@
 package com.rambler.belevtsevdaniil.presenter.mappers;
 
 import com.rambler.belevtsevdaniil.model.dto.RssDTO;
-import com.rambler.belevtsevdaniil.presenter.vo.NewsItem;
+import com.rambler.belevtsevdaniil.presenter.beans.NewsItem;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class RssNewsMapper implements Func1<RssDTO, List<NewsItem>> {
         }
         List<NewsItem> newsList = Observable
                 .from(rssDTO.getChannel().getNewsFeed())
-                .map(elementDTO -> new NewsItem(rssDTO.getChannel().getCopyright(), elementDTO))
+                .map(elementDTO -> new NewsItem(rssDTO.getProvider(), elementDTO))
                 .toList()
                 .toBlocking()
                 .first();
